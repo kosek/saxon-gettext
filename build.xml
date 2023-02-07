@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="saxon-gettext" default="default" basedir=".">
+
+  <target name="compile">
+    <mkdir dir="build"/>
+
+    <javac srcdir="src"
+           destdir="build"
+           classpath="lib/saxon-pe-11.4.jar"/>
+  </target>
+
+  <target name="dist">
+    <tstamp/> 
+    <zip zipfile="saxon-gettext-${DSTAMP}.zip">
+      <zipfileset dir=".">
+        <include name="dist/**"/>
+        <include name="src/**"/>
+        <include name="doc/**"/>
+        <include name="nbproject/**"/>
+        <include name="samples/**"/>
+        <include name="LICENSE"/>
+        <exclude name="samples/demo*.xsl"/>
+      </zipfileset>
+    </zip>    
+  </target>
+</project>
