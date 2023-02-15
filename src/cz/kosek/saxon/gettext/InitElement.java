@@ -8,10 +8,13 @@ import net.sf.saxon.expr.XPathContext;
 import net.sf.saxon.expr.instruct.Executable;
 import net.sf.saxon.om.AttributeInfo;
 import net.sf.saxon.om.AttributeMap;
+import net.sf.saxon.om.EmptyAtomicSequence;
 import net.sf.saxon.om.Sequence;
+import net.sf.saxon.style.Compilation;
 import net.sf.saxon.style.ComponentDeclaration;
 import net.sf.saxon.style.ExtensionInstruction;
 import net.sf.saxon.trans.XPathException;
+import net.sf.saxon.value.EmptySequence;
 import net.sf.saxon.value.StringValue;
 
 public class InitElement extends ExtensionInstruction
@@ -52,7 +55,7 @@ public class InitElement extends ExtensionInstruction
       domain = typeCheck("domain", domain);
   }
 
-  public Expression compile(Executable exec, ComponentDeclaration decl) throws XPathException
+  public Expression compile(Compilation exec, ComponentDeclaration decl) throws XPathException
   {
     return new InitInstruction(locale, domain);
   }
@@ -65,7 +68,7 @@ public class InitElement extends ExtensionInstruction
     public InitInstruction(Expression locale,
                            Expression domain) 
     {
-      Expression[] subs = { locale, domain };
+      Expression[] subs = { locale, domain };      
       setArguments(subs);
     };
 
@@ -88,7 +91,7 @@ public class InitElement extends ExtensionInstruction
     {
       Gettext.setLocale(arguments[LOCALE].head().getStringValue());
       Gettext.setDomain(arguments[DOMAIN].head().getStringValue());
-      return null;
+      return new StringValue("");
     }
   }
 }

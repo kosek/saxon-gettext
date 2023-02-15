@@ -5,6 +5,10 @@ import java.text.*;
 import gnu.gettext.*;
 
 import com.saxonica.xsltextn.ExtensionElementFactory;
+
+import net.sf.saxon.lib.ExtensionFunctionDefinition;
+import net.sf.saxon.om.StructuredQName;
+import net.sf.saxon.s9api.SequenceType;
 import net.sf.saxon.style.StyleElement;
 
 public class Gettext implements ExtensionElementFactory
@@ -71,3 +75,4 @@ public class Gettext implements ExtensionElementFactory
     return MessageFormat.format(fmt, (Object[])params);
   }
 }
+

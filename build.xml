@@ -9,6 +9,11 @@
            classpath="lib/saxon-pe-11.4.jar"/>
   </target>
 
+  <target name="jar" depends="compile">
+    <jar basedir="build"
+         destfile="dist/saxon-gettext.jar"/>
+  </target>
+
   <target name="dist">
     <tstamp/> 
     <zip zipfile="saxon-gettext-${DSTAMP}.zip">

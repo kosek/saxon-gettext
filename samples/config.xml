@@ -1,0 +1,17 @@
+<configuration xmlns="http://saxon.sf.net/ns/configuration"
+               edition="PE">
+
+  <!--<global allowOldJavaUriFormat="true"/>-->
+
+  <xslt>
+    <extensionElement namespace="http://kosek.cz/cz.kosek.saxon.gettext.Gettext"
+        factory="cz.kosek.saxon.gettext.Gettext"/>
+  </xslt>
+
+  <resources>    
+    <extensionFunction>cz.kosek.saxon.gettext.GettextFunction</extensionFunction>
+    <extensionFunction>cz.kosek.saxon.gettext.Gettext_Function</extensionFunction>
+    <extensionFunction>cz.kosek.saxon.gettext.NGettextFunction</extensionFunction>
+  </resources>
+
+</configuration>
