@@ -1,5 +1,6 @@
 package cz.kosek.saxon.gettext;
 
+import net.sf.saxon.expr.parser.RebindingMap;
 import net.sf.saxon.expr.Expression;
 import net.sf.saxon.expr.SimpleExpression;
 import net.sf.saxon.expr.XPathContext;
@@ -38,6 +39,9 @@ public class GetTextElement extends ExtensionInstruction
 
   private static class GetTextInstruction extends SimpleExpression
   {
+
+    public GetTextInstruction(){}
+
     public GetTextInstruction(Expression text)
     {
       Expression[] subs = { text };      
@@ -61,6 +65,11 @@ public class GetTextElement extends ExtensionInstruction
       return "gettext:gettext";
     }
   
+    public Expression copy(RebindingMap rebindings) {
+      GetTextInstruction gt2 = new GetTextInstruction();
+      return gt2.copyOperandsFrom(this);
+    }
+
     public Sequence call(XPathContext context, Sequence[] arguments) throws XPathException 
     {      
       String param = "";
